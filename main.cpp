@@ -2,6 +2,7 @@
 #include<vector>
 #include<string>
 #include<stack>
+#include <cstring>
 
 
 using namespace std;
