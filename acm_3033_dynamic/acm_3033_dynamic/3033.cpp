@@ -1,72 +1,96 @@
-#include<iostream>
-#include<string>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <list>
+#include <map>
+#include <cmath>
+#include <cstdio>
+#include <cstring>
+#include <stack>
+#include <tuple>
+#include <set>
+#include <string>
+
 using namespace std;
-string buffer;
-string str;
-int num;
-int width;
-int mat[2000][2000];
-int alpha[26][26];
 
-void input(istream& in) {
-	in >> num;
-	in.ignore(256,'\n');
-	in >> str;
-	for (int i = 0; i < 26; i++) {
-		for (int j = 0; j < 26; j++) {
-			alpha[i][j] = 0;
-		}
+struct SuffixComparator
+{
+	const vector<int>& group;
+	int t;
+	SuffixComparator(const vector<int>& _group, int _t) : group(_group), t(_t) {}
+	bool operator() (int a, int b)
+	{
+		if (group[a] != group[b])
+			return group[a] < group[b];
+		return group[a + t] < group[b + t];
 	}
+};
 
-	for (int i = 0; i < num; i++) {
-		for (int j = 0; j < num; j++) {
-			mat[i][j] = 0;
-		}
-	}
-	for (int i = 0; i < num-1; i++) {
-		if (alpha[int(str[i] - 'a')][int(str[i + 1] - 'a')] >0) {
-			mat[i][i+1] = 1;
-		}
-		else {
-			mat[i][i + 1] = 0;
-		}
-		alpha[int(str[i]-'a')][int(str[i+1] - 'a')]+=1;
-		
-	}
+vector<int> getSuffixArray(const string& s)
+{
+	int n = s.size();
 
+	int t = 1;
+	vector<int> group(n + 1);
+	for (int i = 0; i < n; i++)
+		group[i] = s[i];
+	group[n] = -1;
+
+	vector<int> perm(n);
+	for (int i = 0; i < n; i++)
+		perm[i] = i;
+
+	vector<int> newGroup(n + 1);
+	while (t < n)
+	{
+		SuffixComparator compareUsing2T(group, t);
+		sort(perm.begin(), perm.end(), compareUsing2T);
+
+		t *= 2;
+		if (t >= n)
+			break;
+
+		newGroup[n] = -1;
+		newGroup[perm[0]] = 0;
+		for (int i = 1; i < n; i++)
+			if (compareUsing2T(perm[i - 1], perm[i]))
+				newGroup[perm[i]] = newGroup[perm[i - 1]] + 1;
+			else
+				newGroup[perm[i]] = newGroup[perm[i - 1]];
+		group = newGroup;
+	}
+	return perm;
 }
 
-void output() {
-	for (int i = num-2; i >= 0; i--) {
-		for (int j = i+2; j < num; j++) {
-			mat[i][j] = mat[i + 1][j] && mat[i][j - 1];
+int longestCommonPrefix(const string& s)
+{
+	vector<int> a = getSuffixArray(s);
+	vector<int> rank(a.size());
+	for (int i = 0; i < a.size(); i++)
+		rank[a[i]] = i;
+
+	int ret = 0;
+	int h = 0;
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (rank[i])
+		{
+			int j = a[rank[i] - 1];
+			while (s[i + h] == s[j + h])
+				h++;
+			ret = max(ret, h);
 		}
-	}
-	for (int i = 0; i < num; i++) {
-		for (int j = 0; j < num; j++) {
-			cout << mat[i][j] << " ";
-		}
-		cout << endl;
+		if (h)
+			h--;
 	}
 
-	for (int i = 0; i < num; i++) {
-		for (int j = num - 1; j > num - i-2; j--) {
-			if (mat[i][j] == 1)
-			{
-				cout << (j-i + 1) << endl;
-				return ;
-			}
-		}
-	}
-
-
-	
+	return ret;
 }
-
-
-
-int main() {
-	input(cin);
-	output();
+int main()
+{
+	int L;
+	string a;
+	cin >> L >> a;
+	cout << longestCommonPrefix(a);
+	return 0;
 }
