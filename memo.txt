@@ -1,0 +1,5 @@
+10815 - binary_serch라는 stl함수 사용 (a, a+n, b[i])
+
+baskets.assign(N,0); 백터 N개를 0으로 설정한다.
+     
+for(auto& it : baskets)  -> 백터 돌때 사용한다. 
