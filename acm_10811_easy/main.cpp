@@ -10,6 +10,7 @@ int main() {
         arr[i] = i;
     }
     int a,b,temp;
+
     for(int i=0; i< m; i++){
         cin >> a >> b;
         for(int j=a; j<=b; j++){
