@@ -1,44 +1,39 @@
-#include<iostream>
+#include <iostream>
 #include<vector>
+#include <algorithm>
+#include <cstring>
 #include<string>
-#include<algorithm>
+#include<math.h>
+#include<cstdio>
+#include<stdlib.h>
+
 using namespace std;
-typedef pair<int, string> PIS;
-int num;
-int a;
-char b[101];
-string wow;
-vector<PIS>arr[200];
-void input(istream& in) {
-	
-	scanf_s("%d", &num);
-	//in >> num;
-	string tot;
-	vector<PIS> temp;
-	for (int i = 0; i < num; i++) {
-		//scanf_s("%d", &a);
-		scanf_s("%64s", b);		
-		cout << b << endl;
-		//in >> a >> b;
-		//arr[a - 1].push_back(make_pair(a, wow));
-	}
-	
-}
-int siz;
-int method() {
-	for (int i = 0; i < 200; i++) {
-		siz = arr[i].size();
-		if (siz < 1) continue;
-		for (int j = 0; j < siz; j++) {
-			cout << arr[i][j].first << " " << arr[i][j].second << endl;
-		}
-	}
-	return 0;
-}
-
-
+int a, b, c;
+string temp;
+int lower = 0;
+int upper = 0;
+int spaces = 0;
+int num = 0;
+vector<string> arr;
 int main() {
+	for (int i = 0; i< 100; i++) {
+		lower, upper, spaces, num = 0;
+		getline(cin, temp);
+		for (int j = 0; j<temp.size(); j++) {
+			if (int(temp[j] - 'A') >= 0 && int(temp[j] - 'A') <26) {
+				upper += 1;
+			}
+			else if (int(temp[j] - 'a') >= 0 && int(temp[j] - 'a') <26) {
+				lower += 1;
+			}
+			else if (int(temp[j] - '0') >= 0 && int(temp[j] - '0') <10) {
+				num += 1;
+			}
+			else {
+				spaces += 1;
+			}
+		}
+		cout << lower << " " << upper << " " << num << " " << spaces << endl;
+	}
 
-	input(cin);
-	method();
 }
