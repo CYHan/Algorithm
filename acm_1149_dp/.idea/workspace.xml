@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
-      <config projectName="acm_11060_dp2" targetName="acm_11060_dp2" />
+      <config projectName="acm_1149_dp" targetName="acm_1149_dp" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="false" GENERATION_PASS_SYSTEM_ENVIRONMENT="true">
@@ -11,8 +11,8 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3483defc-a0f0-4c7b-bb12-12455643a1b5" name="Default" comment="" />
-    <ignored path="acm_11060_dp2.iws" />
+    <list default="true" id="2003a553-bf5d-4ae8-960c-4c06fed00a92" name="Default" comment="" />
+    <ignored path="acm_1149_dp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,7 +27,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="acm_11060_dp2" />
+    <favorites_list name="acm_1149_dp" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
@@ -44,8 +44,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+            <state relative-caret-position="375">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -67,8 +67,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="50" />
-    <option name="y" value="4" />
+    <option name="x" value="95" />
+    <option name="y" value="37" />
     <option name="width" value="1807" />
     <option name="height" value="1032" />
   </component>
@@ -101,7 +101,7 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="acm_11060_dp2" />
+              <option name="myItemId" value="acm_1149_dp" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -112,8 +112,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Application.acm_11060_dp2">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="acm_11060_dp2" TARGET_NAME="acm_11060_dp2" CONFIG_NAME="Debug">
+  <component name="RunManager" selected="Application.acm_1149_dp">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="acm_1149_dp" TARGET_NAME="acm_1149_dp" CONFIG_NAME="Debug">
       <envs />
       <method />
     </configuration>
@@ -121,13 +121,13 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="acm_11060_dp2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="acm_11060_dp2" TARGET_NAME="acm_11060_dp2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="acm_11060_dp2" RUN_TARGET_NAME="acm_11060_dp2">
+    <configuration default="false" name="acm_1149_dp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="acm_1149_dp" TARGET_NAME="acm_1149_dp" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="acm_1149_dp" RUN_TARGET_NAME="acm_1149_dp">
       <envs />
       <method />
     </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
-      <item index="1" class="java.lang.String" itemvalue="Application.acm_11060_dp2" />
+      <item index="1" class="java.lang.String" itemvalue="Application.acm_1149_dp" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -138,16 +138,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3483defc-a0f0-4c7b-bb12-12455643a1b5" name="Default" comment="" />
-      <created>1469603307200</created>
+      <changelist id="2003a553-bf5d-4ae8-960c-4c06fed00a92" name="Default" comment="" />
+      <created>1469614910203</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1469603307200</updated>
+      <updated>1469614910203</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="50" y="4" width="1807" height="1032" extended-state="0" />
+    <frame x="95" y="37" width="1807" height="1032" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24986026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -194,14 +194,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -212,8 +204,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="375">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding />
         </state>
       </provider>
