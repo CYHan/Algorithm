@@ -3,20 +3,23 @@
 #include <algorithm>
 using namespace std;
 int num, temp1,temp2;
-vector<int> arr;
-int cal;
-
-
+int arr[501];
+int dp1[501][501];
+int dp2[501][501];
+int mini = 2e9;
 void process(){
-    sort(arr.begin(),arr.end());
-    for(int i=0; i< temp1; i++){
-        cal = arr[0]+ arr[1];
-        if(arr[2] <= cal && arr[3] > cal){
-            arr[]
+
+    for(int i=0; i< temp1; i++) dp1[i][i] = arr[i], dp2[i][i] =0;
+    for(int i=temp1 - 2; i >=0; i--){
+        for(int j=i+1; j< temp1; j++){
+            dp1[i][j] = dp1[i][j-1] + dp1[j][j];
+            for(int k=i; k< j; k++) mini =  min(mini,dp2[i][k] + dp2[k+1][j] );
+            dp2[i][j] = dp1[i][j] + mini;
+            mini = 2e9;
         }
     }
+    printf("%d\n",dp2[0][temp1-1]);
 
-    arr.clear();
 }
 int main() {
     scanf("%d",&num);
@@ -24,7 +27,7 @@ int main() {
         scanf("%d",&temp1);
         for(int j=0; j<temp1; j++){
             scanf("%d", &temp2);
-            arr.push_back(temp2);
+            arr[j] = temp2;
         }
         process();
     }
