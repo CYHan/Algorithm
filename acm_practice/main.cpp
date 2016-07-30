@@ -6,28 +6,17 @@
 #include <map>
 #include <math.h>
 #include <stack>
+
 using namespace std;
-int num;
+int a,b,num;
 bool wow ;
 string str;
-int main(){
-    cin >> num;
-    for(int i=0; i< num; i++){
-        cin >> str;
-        stack<int> st;wow = false;
-        for(int i=0; i< str.size(); i++){
-            if(str[i] == '(') st.push(str[i]);
-            else if(str[i] == ')') {
-                if(!st.empty() && st.top()=='(') st.pop();
-                else {cout << "NO" << endl; wow= true; break;}
-            }
+int main() {
 
-        }
-        if(wow == false) {
-            if (st.empty()) cout << "YES" << endl;
-            else cout << "NO" << endl;
-        }
+    while(scanf("%d %d", &a, &b) == 2 ) {
+        cout << a+b << endl;
     }
+
 
 }
 

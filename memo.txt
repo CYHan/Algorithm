@@ -6,3 +6,16 @@ for(auto& it : baskets)  -> 백터 돌때 사용한다.
 
 num += stoi(cov);
 cov.clear();   // string초기화로 clear() 함수를 쓴다.
+
+eof
+int a, b;
+ 
+while( scanf("%d %d", &a, &b) == 2 ) { // input a, b 두 수 전부 정상적으로 받아졌는지 확인한다.
+ 
+/* 문제 해결 */
+ 
+}
+ 
+return 0;
+/* 만약 더 이상의 테스트 케이스가 없다면,
+위의 while문의 조건문은 거짓이 되어 프로그램을 종료하게 됩니다. */
