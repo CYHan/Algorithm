@@ -2,39 +2,25 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-int num,temp;
-int dp[10001][10001];
-vector<int> arr;
+int num,temp,cnt=0;
+
+vector<int> dp;
 void input(){
-
     scanf("%d",&num);
-    for(int i=0; i<num; i++){
-        for(int j=0; j<num; j++){
-            dp[i][j] =0;
-        }
-    }
-    for(int i=0; i<num; i++){
+    dp.assign(num,0);
+}
+void process(){
+    scanf("%d",&temp);
+    dp[0] = temp;
+    int maxim = dp[0];
+    for(int i=1; i< num; i++){
         scanf("%d",&temp);
-        arr.push_back(temp);
+        dp[i] = max(temp, dp[i-1]+temp);
+        maxim = max(maxim,dp[i]);
     }
-    for(int i=0; i<num-1; i++){
-        dp[i][i+1] = arr[i] + arr[i+1];
-    }
-    for(int i=num-3; i >=0; i--){
-        for(int j=i+2; j < num; j++){
-            dp[i][j] = dp[i+1][j] + dp[i][j-1] - arr[j-1];
-        }
-    }
-
-
-    for(int i=0; i< num; i++){
-        for(int j=0; j< num; j++){
-            cout << dp[i][j] << " ";
-        }
-        cout << endl;
-    }
-
+    printf("%d",maxim);
 }
 int main() {
     input();
+    process();
 }
