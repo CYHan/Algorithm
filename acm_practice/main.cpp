@@ -8,15 +8,13 @@
 #include <stack>
 
 using namespace std;
-int a,b,num;
+int a,b,num,N;
 bool wow ;
 string str;
 int main() {
-
-    while(scanf("%d %d", &a, &b) == 2 ) {
-        cout << a+b << endl;
-    }
-
+    cin >> N;
+    if(N%2 == 1) cout << "0" << endl;
+    else cout << pow(3,N-1) + pow(2,N-2) << endl;
 
 }
 
