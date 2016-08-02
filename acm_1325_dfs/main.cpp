@@ -12,9 +12,10 @@ void input(){
     arr.assign(a,0);
     for(int i=0; i<b; i++){
         scanf("%d%d",&c,&d);
-        graph[--c].push_back(--d);
+        graph[--d].push_back(--c);
     }
 }
+int maxim =0;
 void bfs(int start){
     visited.assign(a,0);
     cnt=0;
@@ -26,22 +27,16 @@ void bfs(int start){
         for(int i=0; i<graph[here].size(); i++){
             if(visited[graph[here][i]] == true) continue;
             visited[graph[here][i]] = true;
-            arr[graph[here][i]] =max(arr[graph[here][i]] , cnt);
             q.push(graph[here][i]);
-
         }
     }
-
+    arr[start] = cnt;
+    maxim = max(cnt,maxim);
 }
 
 void output(){
-    int maxim =0;
-    for(vector<int>::iterator it = arr.begin(); it!= arr.end(); it++) maxim = max(*it,maxim);
-    for(int i=0; i< arr.size(); i++) {
-        //cout << arr[i] << " ";
-        if (maxim == arr[i]) printf("%d ", i + 1);
-
-    }
+    for(int i=0; i< arr.size(); i++)
+       if (maxim == arr[i]) printf("%d ", i + 1);
 }
 int main() {
     input();
