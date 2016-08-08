@@ -1,57 +1,69 @@
+#include <algorithm>
+#include <queue>
 #include <iostream>
 #include <vector>
-#include <queue>
-#include <algorithm>
 using namespace std;
-int n,num,a,b,c;
-int sum =0;
-vector<bool>visited;
-vector<int> arr[1003];
-typedef pair<int,pair<int,int>> PII;
-priority_queue<PII,vector<PII>,greater<PII>> PQ;
-void input(){
-    scanf("%d%d",&n,&num);
-    for(int i=0; i< num; i++)                                 /// 우선순위큐로 노드 가중치 입력
-        scanf("%d%d%d",&a,&b,&c), PQ.push({c,{--a,--b}});
-}
-int beg,ed,val=0;
 
-bool cycle;
-void mst(){
-    while(!PQ.empty()){ cycle = false; visited.assign(n,0);   // 우선순위큐 순회
-        beg = PQ.top().second.first; ed = PQ.top().second.second; val = PQ.top().first;
+typedef pair<int, int> PAIR;
+const int INF = 2000000;
+vector<PAIR> Graph[1000];
+bool selected[1000];
+vector<int>dist(1000);
+int vertex, edge;
+int sum = 0;
+
+void prim() {
+    int cnt = vertex - 1;
+
+    dist.assign(vertex,INF);
+    priority_queue<PAIR, vector<PAIR>, greater<PAIR> > PQ;
+
+    dist[0] = 0;
+    selected[0] = true;
+    PQ.emplace(-1, 0);
+
+    while (cnt != 0) {
+        PAIR t = PQ.top();
         PQ.pop();
+        int here = t.second;
 
-        queue<int> Q;
-        Q.push(beg);
-        visited[beg] = true;
-        while(!Q.empty()){
+        if (t.first != -1) {
+            if (selected[here]) continue;
 
-            int wow = Q.front();
-            Q.pop();
-            for(vector<int> :: iterator it = arr[wow].begin(); it != arr[wow].end(); it ++){
-                if(!visited[*it]) {
-                    visited[*it] = true;
-                    if ((*it) == ed) {                  //// 사이클유무 확인
-                        cycle = true;
-                        break;
-                    }
-                    Q.push(*it);
-                }
+            sum += t.first;
+
+            selected[here] = true;
+            cnt--;
+        }
+
+        for (auto i : Graph[here]) {
+            int there = i.second;
+            int weight = i.first;
+
+            if (!selected[there] && dist[there] > weight) {
+                dist[there] = weight;
+
+                PQ.emplace(weight, there);
             }
         }
-        if(cycle == false) {sum +=val;arr[beg].push_back(ed); arr[ed].push_back(beg);}  // 사이클이없으면 연결하고 가중치 추가
-
-
     }
 
-}
 
+}
 void output(){
     printf("%d",sum);
 }
+
 int main() {
-    input();
-    mst();
+    int a, b, c;
+    scanf("%d %d", &vertex, &edge);
+
+    for (int i = 0; i < edge; i++) {
+        scanf("%d %d %d", &a, &b, &c);
+        a--, b--;
+        Graph[a].emplace_back(c, b);
+        Graph[b].emplace_back(c, a);
+    }
+    prim();
     output();
 }
