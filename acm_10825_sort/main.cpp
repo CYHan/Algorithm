@@ -5,19 +5,23 @@
 #include <cstring>
 
 using namespace std;
-int num;
-string a,b,c,d,temp;
-char wow[1000000];
-vector<string> arr;
-char buf[1000000];
+int num,b,c,d,temp;
+char a[11];
+typedef pair<int, string> PIS;
+vector<PIS> arr;
+
 int main() {
-    scanf("%d",&num);
-    for(int i=0; i<num; i++){
-        cin >> a >> b >> c >> d;
-        temp = a+b+c+d;
-        arr.push_back(temp);
+    scanf("%d",&num) ;
+    for(int i=0; i< num; i++){
+        scanf("%s",a);
+        scanf("%d%d%d",&b,&c,&d);
+        temp = -(b*10000 + (100-c)*100 + d);
+        arr.emplace_back(temp,a);
     }
-    sort(arr.begin(), arr.end());
-    f
+    sort(arr.begin(),arr.end());
+
+    for(vector<PIS>::iterator it = arr.begin(); it!= arr.end(); it++){
+        printf("%s\n",it->second.c_str());
+    }
 
 }
