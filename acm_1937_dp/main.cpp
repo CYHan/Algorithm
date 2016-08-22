@@ -1,60 +1,78 @@
-#include <iostream>
-#include <queue>
+#include <stdio.h>
+#include <string.h>
+#include <algorithm>
 using namespace std;
-typedef pair<short,short> PII;
-int num;
-int maxim = 0;
-int total_cnt =0;
-int adjust =0;
-int before =0;
-int x;
-int y;
-PII here;
-queue<PII> q;
-int after =0;
-int arr[501][501];
-const short dx[] ={ 0, 0, -1, 1 };
-const short dy[] = { 1, -1, 0, 0 };
-void input(){
-    scanf("%d",&num);
-    for(short i=0; i< num; i++)
-        for (short j=0; j< num; j++)
-            scanf("%d",&arr[i][j]);
-}
-void bfs(short &r, short &c){
-    total_cnt =0;
-    q.push({r,c});
-    adjust = q.size();
-    while(!q.empty()){
-        here = q.front();
-        q.pop();
-        adjust -=1;
-        for(int i=0; i< 4; i++){
-            before = arr[here.first][here.second];
-            x = here.first + dx[i];
-            y = here.second + dy[i];
-            if(x < 0 || x >= num || y <0 || y >=num ) continue;
-            after = arr[x][y];
-            if(after > before) {
-                q.push({x,y});
-            }
-        }
-        if(adjust==0){
-            adjust = q.size();
-            total_cnt +=1;
-        }
-    }
-    maxim = max(maxim,total_cnt);
-   // cout << total_cnt << endl ;
-}
-void output(){
-    printf("%d",maxim);
+
+struct Point {
+    int x, y;
+    int value;
+};
+
+bool cmp(const Point &first, const Point &second) {
+    return first.value < second.value;
 }
 
-int main() {
-    input();
-    for(short i=0; i< num; i++)
-        for (short j=0; j< num; j++)
-            bfs(i,j);
-    output();
+int n;
+Point input[510 * 510];
+int map[510][510];
+int dp[510][510];
+int ans;
+
+void print()
+{
+    int i, j;
+
+    printf("\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("%d ", dp[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main()
+{
+    int i, j;
+    int dy[4] = { -1, 0, 0, 1 };
+    int dx[4] = { 0, -1, 1, 0 };
+    int nexty, nextx;
+    Point current;
+    int max;
+
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &map[i][j]);
+            input[i * n + j].y = i;
+            input[i * n + j].x = j;
+            input[i * n + j].value = map[i][j];
+        }
+    }
+
+    sort(input, input + n * n, cmp);
+
+    for (i = 0; i < n * n; i++) {
+        max = 0;
+        current = input[i];
+        for (j = 0; j < 4; j++)    {
+            nexty = current.y + dy[j];
+            nextx = current.x + dx[j];
+
+            if (nexty >= 0 && nexty < n && nextx >= 0 && nextx < n) {
+                if (map[nexty][nextx] < map[current.y][current.x]) {
+                    if (dp[nexty][nextx] > max)    max = dp[nexty][nextx];
+                }
+            }
+        }
+
+        dp[current.y][current.x] = max + 1;
+
+        if (dp[current.y][current.x] > ans)    ans = dp[current.y][current.x];
+    }
+
+    printf("%d\n", ans);
+
+    return 0;
 }
